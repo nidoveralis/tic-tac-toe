@@ -1,0 +1,30 @@
+@import url('./vendor/normalize.css');
+.tic {
+  width: 100vw;
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tic__list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.tic__item {
+  margin: 0;
+  padding: 0;
+  border: 3px solid #484848;
+  width: 200px;
+  height: 200px;
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.winner {
+  background-color: rgba(32, 246, 13, 0.357);
+}
