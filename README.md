@@ -1,4 +1,4 @@
-## tic-tac-toe
+# Tic-tac-toe
 Это простая игра в крестики нолики. 
 ## Stack
 + Flex
