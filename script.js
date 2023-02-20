@@ -1,33 +1,48 @@
-//const itemsList =document.querySelectorAll('.tic__item') //Array.from(document.querySelectorAll('tic__item'));
 const itemsList =document.querySelectorAll('.tic__item');
-//const itez =document.querySelector('.tic__list');
 const circle = "url('./images/circl.png')";
-const cross = "url('./images/cross.png')"
+const cross = "url('./images/cross.png')";
 let player = 'cross';
-//const positions = {circle:[], cross:[]}
-const positions = {}
-const x=[0,1,2]
+const positions = {};
+const x=[0,1,2];
+
+function clearField() {
+  player = 'cross';
+  itemsList.forEach((item)=>{
+    item.classList.remove('winner');
+    item.style.backgroundImage=null;
+  });
+};
+
+function openPopup(win) {
+  const popup = confirm(`Победил ${win}. Хотите сыграть ещё раз?`);
+  if(popup) {
+    for(let key in positions) {
+      delete positions[key];
+      clearField();
+    };
+  };
+};
 
 function addPosition(zz,s) {//проверяет кто выйграл
  if(positions[0]===zz && positions[1]===zz && positions[2]===zz){
   itemsList[0].classList.add('winner');
   itemsList[1].classList.add('winner');
   itemsList[2].classList.add('winner');
-  console.log(`winner ${zz}`,itemsList[0])
+  setTimeout(openPopup, 1000, zz)
   }else if(positions[3]===zz && positions[4]===zz && positions[5]===zz){
-    console.log(`winner ${zz}`)
+    openPopup(zz);
   }else if(positions[6]===zz && positions[7]===zz && positions[8]===zz){
-    console.log(`winner ${zz}`)
+    openPopup(zz);
   }else if(positions[0]===zz && positions[3]===zz && positions[6]===zz){
-    console.log(`winner ${zz}`)
+    openPopup(zz);
   }else if(positions[1]===zz && positions[4]===zz && positions[7]===zz){
-    console.log(`winner ${zz}`)
+    openPopup(zz);
   }else if(positions[2]===zz && positions[5]===zz && positions[8]===zz){
-  console.log(`winner ${zz}`)
+    openPopup(zz);
   }else if(positions[0]===zz && positions[4]===zz && positions[8]===zz){
-   console.log(`winner ${zz}`)
+    openPopup(zz);
   }else if(positions[2]===zz && positions[4]===zz && positions[6]===zz){
-  console.log(`winner ${zz}`)
+    openPopup(zz);
   }
 };
 
