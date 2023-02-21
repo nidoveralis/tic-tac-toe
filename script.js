@@ -3,6 +3,7 @@ const modeGame = document.querySelector('.tic__select');
 const circle = "url('./images/circl.png')";
 const cross = "url('./images/cross.png')";
 const positions = new Object();
+let winner = '';
 
 function clearField() {
   for(let key in positions) {
@@ -12,15 +13,17 @@ function clearField() {
     item.classList.remove('winner');
     item.style.backgroundImage=null;
   });
+  winner = ''
 };
 
 function openPopup(win) {
-  const popup = confirm(`Победил(а) ${win}. Хотите сыграть ещё раз?`);
+  confirm(`Победил(а) ${win}. Хотите сыграть ещё раз?`);
   clearField();
   clickCell();
 };
 
 function winnerShow(ar, win) {
+  winner = win;
   setTimeout(openPopup, 500, win);
   ar.forEach(elem=>{
     itemsList[elem].classList.add('winner');
@@ -44,7 +47,7 @@ function addPosition(user) {//проверяет кто выйграл
       winnerShow([0,4,8], user)
     }else if(positions[2]===user && positions[4]===user && positions[6]===user){
       winnerShow([2,4,6], user)
-    };
+    }
 };
 
 function searchFreeCells() {//определяет наличие свободных ячеек
@@ -54,10 +57,10 @@ function searchFreeCells() {//определяет наличие свободн
       freeCells.push(i);
     };
   };
-  if(freeCells.length === 0) {
+  if(freeCells.length === 0 && winner==='') {
     setTimeout(openPopup, 500, 'дружба');
-  } else {
-  moveComp(freeCells);
+  }else if(freeCells.length !== 0) {console.log((freeCells.length === 0, winner===''))
+    moveComp(freeCells);
   };
 };
 
