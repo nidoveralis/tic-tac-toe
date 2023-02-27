@@ -13,11 +13,13 @@ function clearField() {
     item.classList.remove('winner');
     item.style.backgroundImage=null;
   });
-  winner = ''
+  winner = '';
+  clickCell();
 };
 
 function openPopup(win) {
   confirm(`Победил(а) ${win}. Хотите сыграть ещё раз?`);
+  removeClickCell();
   clearField();
   clickCell();
 };
@@ -59,21 +61,23 @@ function searchFreeCells() {//определяет наличие свободн
   };
   if(freeCells.length === 0 && winner==='') {
     setTimeout(openPopup, 500, 'дружба');
-  }else if(freeCells.length !== 0) {console.log((freeCells.length === 0, winner===''))
+  }else if(freeCells.length !== 0) {//console.log((freeCells.length === 0, winner===''))
     moveComp(freeCells);
   };
 };
 
 function moveComp(move) {///ход компьютера
-  const numberCell = Math.floor(Math.random() * move.length)
-  itemsList[move[numberCell]].style.backgroundImage = circle;
-  positions[move[numberCell]]='circle';
-  addPosition('circle');
+  if(winner==='') {
+    const numberCell = Math.floor(Math.random() * move.length)
+    itemsList[move[numberCell]].style.backgroundImage = circle;
+    positions[move[numberCell]]='circle';
+    addPosition('circle');
+  }
 };
 
 function moveUser(e, ind) {////ход игрока
   const cell = e.target;
-  if(cell.style.backgroundImage ==='') {
+  if(cell.style.backgroundImage ==='' && winner==='') {
     cell.style.backgroundImage = cross;
     positions[ind]='cross';
     addPosition('cross');
@@ -86,6 +90,12 @@ function clickCell() {
   positions[ind]=''
   item.addEventListener('click',(e)=>{
     moveUser(e,ind)});
+  });
+};
+
+function removeClickCell() {
+  itemsList.forEach((item)=>{
+  item.removeEventListener('click',moveUser);
   });
 };
 

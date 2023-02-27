@@ -1,10 +1,58 @@
 @import url('./vendor/normalize.css');
 
+.page {
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.title {
+  text-align: center;
+  margin: 50px auto;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+.table-conteiner {
+  margin-bottom: 30px;
+}
+
+.table {
+  border-collapse: collapse;
+  align-items: left;
+  justify-content: top;
+
+}
+
+.table__box {
+  border: solid 1px #ccc;
+  text-align: center;
+}
+
+.table__link {
+  text-decoration: none;
+  color: #000;
+}
+
+.update-pages__list {
+  margin: 0 auto 30px;
+}
+
+.update-pages__item {
+  margin-bottom: 10px;
+}
+
 .tic {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  flex-direction: column;
+}
+
+.tic__select {
+  margin-bottom: 10px;
 }
 
 .tic__list {
@@ -26,6 +74,97 @@
 
 .winner {
   background-color: rgba(32, 246, 13, 0.357);
+}
+
+@media screen and (min-width: 1401px) {
+
+  .page {
+    margin: 0 30px;
+  }
+
+  .title {
+    font-size: 45px;
+  }
+
+  .subtitle {
+    font-size: 24px;
+    margin: 0 auto 65px;
+    text-align: center;
+  }
+
+  .table__box {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  .update-pages__item {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1400px) {
+
+  .page {
+    margin: 0 30px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 20px;
+    margin: 0 auto 30px;
+  }
+
+  .table__box {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .update-pages__item {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+
+  .page {
+    margin: 0 20px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    margin: 0 auto 30px;
+  }
+
+  .table__box {
+    font-size: 13px;
+    padding: 5px;
+  }
+
+  .update-pages__item {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 607px) {
+
+  .page {
+    margin: 0 10px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .table__box {
+    font-size: 11px;
+  }
 }
 
 @media screen and (min-width: 630px) {
