@@ -1,10 +1,23 @@
 @import url('./vendor/normalize.css');
 
+.page {
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  margin: 20px;
+}
+
+
 .tic {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   margin-top: 10px;
+}
+
+.tic__select {
+  margin-bottom: 10px;
 }
 
 .tic__list {
